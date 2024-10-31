@@ -1,0 +1,18 @@
+1,BLUE,The colour of the sky
+1,TURQUOISE,The tertiarary colour made of green and blue
+1,PURPLE,The complimentary colour of yellow
+1,GREEN,Blue and yellow mixed together
+1,ORANGE,Has the same name as a fruit
+1,YELLOW,The colour correlated to sunshine
+2,POMEGRANATE,You eat the seeds that are red
+2,POMELO,Like a big orange and lemon combined
+2,DRAGONFRUIT,Named after a mythical creature
+2,COCONUT,Comes from palm trees
+2,PINEAPPLE,Sour sweet yellow fruit
+2,LYCHEE,Cream coloured and popular in bubble tea
+3,CHRISTMAS,Merry
+3,SNOW,Cold form of precipitation you see around the holidays
+3,RUDOLPH,The brightest reindeer
+3,FROSTY THE SNOWMAN,Has a button nose
+3,CANDY CANE,Popular candy during the holidays
+3,ELVES,The names of Santas helpers
