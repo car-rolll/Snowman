@@ -1,14 +1,3 @@
-#-------------------------------------------------------------------
-# Program: Melting Snowman
-# Author: Carol Xu
-# Date: December 23, 2022
-# Description: A game of a melting snowman program which allows
-#   the user to select from three different categories of puzzles
-#   with each puzzle should include a clue. They click on circular
-#   letter buttons to try and solve the puzzles.
-# Input: User selects a category to play using 3 rectangular buttons,
-#   and selects letters from 26 circular buttons.  
-#-------------------------------------------------------------------
 
 # Imports pygame, and random
 # Initializes pygame
@@ -32,16 +21,16 @@ extras_font = pygame.font.SysFont('calibri', 70)
 again_font = pygame.font.SysFont('monospace', 20)
 win = pygame.display.set_mode((700,480))
 
-happy = pygame.image.load('nice.png')
+happy = pygame.image.load('./Pictures/nice.png')
 happy = pygame.transform.scale(happy, (50, 50))
-sad = pygame.image.load('wrong.png')
+sad = pygame.image.load('./Pictures/wrong.png')
 sad = pygame.transform.scale(sad, (50, 50))
 clock = pygame.time.Clock
 
-yay = pygame.mixer.Sound('ding.ogg')
-no = pygame.mixer.Sound('buzzer.ogg')
-won = pygame.mixer.Sound('won.ogg')
-lost = pygame.mixer.Sound('lost.ogg')
+yay = pygame.mixer.Sound('./Sounds/ding.ogg')
+no = pygame.mixer.Sound('./Sounds/buzzer.ogg')
+won = pygame.mixer.Sound('./Sounds/won.ogg')
+lost = pygame.mixer.Sound('./Sounds/lost.ogg')
 
 # Creates a list of all the data for each letter button
 def createButtons():
@@ -95,7 +84,7 @@ def loadSnowmanImages():
     smImages = []
     for imgNum in range(9):
         fileName = 'snowman' + str(imgNum) + '.png'
-        smImages.append(pygame.image.load(fileName))
+        smImages.append(pygame.image.load('./Pictures/' + fileName))
     return smImages
 
 # Loads the puzzles created in the text file
@@ -186,7 +175,8 @@ def catBtnClick(mp, buttons):
 def redraw_game_window():
     if currentScreen == 1:
         win.fill(BLUE)
-        win.blit(title, (20, 60))
+        win.blit(title, (110, 60))
+        win.blit(hangman, (170, 115))
         drawCategoryButtons(catButtons)
         
     elif currentScreen == 2:
@@ -196,14 +186,18 @@ def redraw_game_window():
         drawGuess()
         
         if wrongCount == 8:
-            win.blit(lostSurface, (30, 100))
-            win.blit(play_again, (220, 100))
-            win.blit(quit_game, (270, 200))
+            win.blit(wonSurface, (30, 100))
+            win.blit(play_again, (20, 150))
+            win.blit(play_again_key, (20, 175))
+            win.blit(quit_game, (20, 200))
+            win.blit(quit_game_key, (20, 225))
                               
         elif puzzle == guess:
             win.blit(wonSurface, (30, 100))
-            win.blit(play_again, (220, 100))
-            win.blit(quit_game, (270, 200))
+            win.blit(play_again, (20, 150))
+            win.blit(play_again_key, (20, 175))
+            win.blit(quit_game, (20, 200))
+            win.blit(quit_game_key, (20, 225))
         
     elif currentScreen == 3:
         win.fill(BLUE)
@@ -213,9 +207,12 @@ def redraw_game_window():
 
 # Initializes texts to render and the category buttons (with the category name)
 title = extras_font.render('Snowman Game', True, WHITE)
+hangman = extras_font.render('(Hangman)', True, WHITE)
 over = extras_font.render('GAME OVER :(', True, WHITE)
-play_again = again_font.render('PLAY AGAIN?? (Press p)', True, BLUE)
-quit_game = again_font.render('MENU (Press m)', True, BLUE)
+play_again = again_font.render('PLAY AGAIN??', True, WHITE)
+play_again_key = again_font.render('(Press p)', True, WHITE)
+quit_game = again_font.render('MENU', True, WHITE)
+quit_game_key = again_font.render('(Press m)', True, WHITE)
     
 catButtons = [[(56,200,160,80), 'Colours'],
               [(271,200,160,80), 'Exotic Fruits'],
